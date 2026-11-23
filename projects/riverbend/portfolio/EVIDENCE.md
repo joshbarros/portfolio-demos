@@ -3,6 +3,7 @@
 **Date:** 2026-11-23
 **Public dashboard:** https://riverbend.5-222-1-215.sslip.io
 **Screenshots:** `portfolio/screenshots/01-dashboard.png`, `02-public-dashboard.png`
+**Video:** `portfolio/video/riverbend-demo.mp4` (42.8 s: load → defect → quarantine → correction → indicators)
 
 ## Verified
 

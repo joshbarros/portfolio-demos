@@ -16,5 +16,5 @@
 | Recovery scenarios tested | PASS |
 | Public HTTPS deployment | PASS |
 | Screenshots | PASS (2) |
-| Video | PENDING |
+| Video | PASS (42.8 s, captions) |
 | Upwork portfolio entry | PENDING |
