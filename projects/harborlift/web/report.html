@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Harborlift — migration run</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+ body{font-family:Inter,system-ui,sans-serif;background:#f5f6f9;color:#101828;margin:0;padding:40px}
+ main{max-width:1000px;margin:0 auto;background:#fff;border:1px solid #e4e7ec;border-radius:14px;padding:28px}
+ h1{margin:0 0 6px;font-size:1.4rem} p.sub{color:#7b8794;margin:0 0 18px;font-size:.85rem}
+ .meta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:16px 0}
+ .meta div{border:1px solid #e4e7ec;border-radius:10px;padding:10px} .meta span{font-size:.65rem;color:#7b8794;text-transform:uppercase}
+ table{width:100%;border-collapse:collapse;font-size:.78rem} th,td{text-align:left;padding:7px;border-bottom:1px solid #eef0f4}
+ th{font-size:.65rem;text-transform:uppercase;color:#7b8794} .error{color:#b42318;font-weight:700} .ok{color:#067647;font-weight:700}
+ .note{background:#fffaeb;border:1px solid #fdecc8;color:#b54708;padding:10px 12px;border-radius:9px;font-size:.78rem;margin-top:16px}
+</style></head><body><main>
+<h1>Harborlift — application and database migration</h1>
+<p class="sub">Last recorded run · 2026-11-23T20:34:23+00:00 · local Docker Compose: source-db:5441, target-db:5442, app:8181</p>
+<div class="meta">
+ <div><span>Source</span><br>2115ea8fa42ff8fc24382b1161f47e08 · 6 rows</div>
+ <div><span>Target after restore + migration</span><br>2115ea8fa42ff8fc24382b1161f47e08 · 6 rows</div>
+ <div><span>Recovery point</span><br>3752 bytes snapshot</div>
+</div>
+<div class="meta">
+ <div><span>Source at snapshot</span><br>6 rows</div>
+ <div><span>Source after rollback</span><br>7 rows (one accepted write)</div>
+ <div><span>Writes during window</span><br>rejected</div>
+</div>
+<div class="meta">
+ <div><span>Strategy</span><br>Write-freeze window (source and target)</div>
+ <div><span>Writes during window</span><br>Rejected, recorded</div>
+ <div><span>Rollback</span><br>Source unfrozen; write accepted after rollback</div>
+</div>
+<table><thead><tr><th>Step</th><th>Status</th><th>Duration</th><th>Detail</th></tr></thead><tbody><tr><td>unfreeze.both</td><td class='ok'>ok</td><td>24 ms</td><td><code>(None, None)</code></td></tr>
+<tr><td>reset.source</td><td class='ok'>ok</td><td>19 ms</td><td><code>None</code></td></tr>
+<tr><td>reset.target</td><td class='ok'>ok</td><td>20 ms</td><td><code>None</code></td></tr>
+<tr><td>seed.source</td><td class='ok'>ok</td><td>31 ms</td><td><code>None</code></td></tr>
+<tr><td>control.record</td><td class='ok'>ok</td><td>0 ms</td><td><code>('2115ea8fa42ff8fc24382b1161f47e08', 6)</code></td></tr>
+<tr><td>freeze.source</td><td class='ok'>ok</td><td>11 ms</td><td><code>None</code></td></tr>
+<tr><td>write.rejected.during_freeze</td><td class='ok'>ok</td><td>10 ms</td><td><code>rejected: ReadOnlySqlTransaction: cannot execute INSERT in a read-only transaction</code></td></tr>
+<tr><td>backup.source</td><td class='ok'>ok</td><td>153 ms</td><td><code>harborlift-backup.sql 3752 bytes</code></td></tr>
+<tr><td>restore.target</td><td class='ok'>ok</td><td>89 ms</td><td><code>restored 3752 bytes</code></td></tr>
+<tr><td>migrate.target</td><td class='ok'>ok</td><td>14 ms</td><td><code>None</code></td></tr>
+<tr><td>validate.target</td><td class='ok'>ok</td><td>45 ms</td><td><code>{'checksum': '2115ea8fa42ff8fc24382b1161f47e08', 'rows': 6, 'region_nulls': 0, 'index': 1}</code></td></tr>
+<tr><td>freeze.target</td><td class='ok'>ok</td><td>10 ms</td><td><code>None</code></td></tr>
+<tr><td>cutover.start_target_app</td><td class='ok'>ok</td><td>502 ms</td><td><code>app on target</code></td></tr>
+<tr><td>validate.behavior</td><td class='ok'>ok</td><td>23 ms</td><td><code>200</code></td></tr>
+<tr><td>write.rejected.after_cutover</td><td class='ok'>ok</td><td>11 ms</td><td><code>rejected with 409: {"error":"cannot execute INSERT in a read-only transaction","ok":false}
+</code></td></tr>
+<tr><td>rollback.stop_target_app</td><td class='ok'>ok</td><td>8 ms</td><td><code>None</code></td></tr>
+<tr><td>rollback.unfreeze_source</td><td class='ok'>ok</td><td>12 ms</td><td><code>None</code></td></tr>
+<tr><td>rollback.start_source_app</td><td class='ok'>ok</td><td>501 ms</td><td><code>app on source</code></td></tr>
+<tr><td>rollback.validate</td><td class='ok'>ok</td><td>11 ms</td><td><code>('2115ea8fa42ff8fc24382b1161f47e08', 6)</code></td></tr>
+<tr><td>rollback.behavior</td><td class='ok'>ok</td><td>14 ms</td><td><code>200</code></td></tr>
+<tr><td>rollback.write_allowed</td><td class='ok'>ok</td><td>15 ms</td><td><code>accepted: {"id":"ord_after_rollback","ok":true}
+</code></td></tr></tbody></table>
+<div class="note">This page shows a recorded run. The demo button is not wired to restore databases or run infrastructure; the lab is reproducible from the scripts in the repository. Writes are rejected during the freeze window; the declared recovery point is the snapshot.</div>
+</main></body></html>

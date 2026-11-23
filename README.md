@@ -14,7 +14,7 @@ SLA or certification is claimed anywhere.
 | **Hookline** — Reliable Webhook and API Automation with Retries and Audit Trail | Webhook integrations that lose events and cannot be replayed | Node.js, TypeScript, Fastify, Postgres, React, Docker | https://hookline.5-222-1-215.sslip.io | PUBLIC_VERIFIED · PACKAGE_PARTIAL |
 | **Ticketline** — Field Service Workflow: Job Tickets, Approvals and PDF Invoices | Field service work that cannot be approved or invoiced consistently | Node.js, TypeScript, Fastify, Postgres, React, PDFKit | https://ticketline.5-222-1-215.sslip.io | PUBLIC_VERIFIED · PACKAGED |
 | **Riverbend** — Incremental Data Pipeline with dbt Tests and Data Quality Monitoring | Pipelines that silently load bad data | Python, DuckDB, dbt, Streamlit | https://riverbend.5-222-1-215.sslip.io | PUBLIC_VERIFIED · PACKAGE_PARTIAL |
-| Harborlift — Migration Lab with Restore and Rollback | Migrations without a tested way back | TBD | — | PLANNED |
+| **Harborlift** — Application and Database Migration Lab with Verified Rollback | Migrations without a tested way back | Postgres, Python, Docker, Caddy | https://harborlift.5-222-1-215.sslip.io | PUBLIC_VERIFIED · PACKAGE_PARTIAL |
 | Vaultgate — Multi-Tenant Portal with Authorization and Audit | Tenant data leaking across boundaries | TBD | — | PLANNED |
 | WooBridge — WooCommerce to API Sync | Store data drifting from the system of record | TBD | — | PLANNED |
 

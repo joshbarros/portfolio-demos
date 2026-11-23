@@ -1,0 +1,4 @@
+.venv/
+__pycache__/
+*.pyc
+web/last_run.json

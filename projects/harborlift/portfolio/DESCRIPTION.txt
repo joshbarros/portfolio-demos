@@ -1,0 +1,5 @@
+Personal demo project: a reproducible migration lab for a small legacy app and its Postgres database. It seeds a source stack, freezes writes, takes a consistent backup, restores into a target, applies a versioned schema migration, validates checksums, row counts, nulls, indexes and application behavior, cuts over, attempts a write during the freeze, and proves rollback by unfreezing the source and accepting a write again.
+
+The strategy is explicit: a write-freeze window covers snapshot, cutover and rollback; writes are rejected and recorded instead of being silently lost. The recovery point is the snapshot. The public page shows the last recorded run with date, environment and strategy; visitors cannot restore databases or run infrastructure.
+
+Docker Compose, Postgres, Flask, psycopg and Caddy. Every step is timed and written to a JSON report and an HTML runbook.
