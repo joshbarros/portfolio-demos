@@ -1,0 +1,5 @@
+Personal demo project: an installable WooCommerce plugin that imports and updates a fictional catalog from an external API. It maps fields, paginates, upserts by a stable external id, logs every run and recovers from failures.
+
+The admin screen configures the API URL, a masked token, page size and the deletion policy (ignore missing products). Manual sync uses a nonce and capability check; an hourly WP-Cron event and an HMAC-authenticated webhook are also available. A transient lock blocks concurrent runs, invalid payloads are reported per item instead of breaking the run, and a temporary API failure is recorded and can be retried.
+
+PHP, WordPress 6.7, WooCommerce 9.5, WP-CLI, MySQL and Docker Compose. 11 end-to-end checks cover first import, re-run without duplication, price update, invalid payload, API failure and recovery, concurrency lock, pagination and webhook signature. Uninstalling keeps commercial data.

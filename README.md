@@ -16,7 +16,7 @@ SLA or certification is claimed anywhere.
 | **Riverbend** — Incremental Data Pipeline with dbt Tests and Data Quality Monitoring | Pipelines that silently load bad data | Python, DuckDB, dbt, Streamlit | https://riverbend.5-222-1-215.sslip.io | PUBLIC_VERIFIED · PACKAGE_PARTIAL |
 | **Harborlift** — Application and Database Migration Lab with Verified Rollback | Migrations without a tested way back | Postgres, Python, Docker, Caddy | https://harborlift.5-222-1-215.sslip.io | PUBLIC_VERIFIED · PACKAGE_PARTIAL |
 | **Vaultgate** — Multi-Tenant Client Portal with Row-Level Security and Audit Logs | Tenant data leaking across boundaries | FastAPI, Postgres RLS, React | https://vaultgate.5-222-1-215.sslip.io | PUBLIC_VERIFIED · PACKAGED |
-| WooBridge — WooCommerce to API Sync | Store data drifting from the system of record | TBD | — | PLANNED |
+| **WooBridge** — Custom WooCommerce API Sync Plugin with Mapping and Error Recovery | Store data drifting from the system of record | PHP, WordPress, WooCommerce, WP-CLI, Docker | local lab (no public admin) | LOCAL_VERIFIED · PACKAGED |
 
 ## Northstar Agent
 
