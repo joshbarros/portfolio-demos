@@ -17,5 +17,5 @@
 | Public page (read-only, last run) | PASS |
 | Scripts and runbook | PASS |
 | Screenshots | PASS (1) |
-| Video | PENDING |
+| Video | PASS (35.8 s replay with captions) |
 | Upwork portfolio entry | PENDING |

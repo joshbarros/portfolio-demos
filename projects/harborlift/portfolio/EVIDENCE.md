@@ -3,6 +3,7 @@
 **Date:** 2026-11-23
 **Public report:** https://harborlift.5-222-1-215.sslip.io
 **Screenshot:** `portfolio/screenshots/01-run-report.png`
+**Video:** `portfolio/video/harborlift-demo.mp4` (35.8 s, recorded run replay with captions)
 
 ## Verified (21 steps, all ok)
 

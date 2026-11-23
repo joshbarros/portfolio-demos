@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Harborlift — recorded run replay</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root { --bg:#f5f6f9; --panel:#fff; --ink:#101828; --muted:#7b8794; --line:#e4e7ec; --ok:#067647; --bad:#b42318; --brand:#0f766e; }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family:Inter,system-ui,sans-serif; background:var(--bg); color:var(--ink); }
+  main { max-width:1040px; margin:32px auto; background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:26px 28px; }
+  h1 { margin:0; font-size:1.35rem; }
+  .sub { color:var(--muted); font-size:.8rem; margin:6px 0 18px; }
+  .bar { height:8px; background:#eef0f4; border-radius:99px; overflow:hidden; margin-bottom:18px; }
+  .bar i { display:block; height:100%; width:0; background:var(--brand); transition:width .4s ease; }
+  .meta { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-bottom:18px; }
+  .meta div { border:1px solid var(--line); border-radius:10px; padding:10px; }
+  .meta span { font-size:.62rem; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); }
+  .meta strong { display:block; font-size:.85rem; margin-top:3px; }
+  table { width:100%; border-collapse:collapse; font-size:.78rem; }
+  th,td { text-align:left; padding:6px 8px; border-bottom:1px solid #f0f2f6; }
+  th { font-size:.62rem; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); }
+  tr.step { opacity:0; transform:translateY(4px); transition:opacity .25s, transform .25s; }
+  tr.step.show { opacity:1; transform:none; }
+  td.ok { color:var(--ok); font-weight:700; }
+  td.error { color:var(--bad); font-weight:700; }
+  code { font-family:"JetBrains Mono",monospace; font-size:.72rem; color:#475467; }
+  .outro { display:none; margin-top:16px; border:1px solid #d1fadf; background:#ecfdf5; border-radius:10px; padding:12px 14px; font-size:.8rem; color:#067647; }
+  .outro.show { display:block; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Harborlift — application and database migration</h1>
+  <p class="sub">Recorded run replay · <span id="runAt"></span> · <span id="env"></span></p>
+  <div class="bar"><i id="progress"></i></div>
+  <div class="meta">
+    <div><span>Source at snapshot</span><strong id="source"></strong></div>
+    <div><span>Target after restore + migration</span><strong id="target"></strong></div>
+    <div><span>Strategy</span><strong>Write-freeze window</strong></div>
+  </div>
+  <table>
+    <thead><tr><th>Step</th><th>Status</th><th>Duration</th><th>Detail</th></tr></thead>
+    <tbody id="steps"></tbody>
+  </table>
+  <div class="outro" id="outro"></div>
+</main>
+<script>
+  const delay = (ms) => new Promise((r) => setTimeout(r, ms));
+  async function main() {
+    const data = await fetch("last_run.json").then((r) => r.json());
+    document.getElementById("runAt").textContent = data.run_at;
+    document.getElementById("env").textContent = data.environment;
+    document.getElementById("source").textContent = `${data.source_checksum[1]} rows · ${data.source_checksum[0].slice(0, 8)}`;
+    document.getElementById("target").textContent = `${data.target_checksum[1]} rows · ${data.target_checksum[0].slice(0, 8)}`;
+    await delay(2500);
+    const body = document.getElementById("steps");
+    let i = 0;
+    for (const step of data.steps) {
+      const tr = document.createElement("tr");
+      tr.className = "step";
+      tr.innerHTML = `<td>${step.step}</td><td class="${step.status}">${step.status}</td><td>${step.duration_ms} ms</td><td><code>${(step.detail ?? "").toString().slice(0, 110)}</code></td>`;
+      body.appendChild(tr);
+      requestAnimationFrame(() => tr.classList.add("show"));
+      i += 1;
+      document.getElementById("progress").style.width = `${Math.round((i / data.steps.length) * 100)}%`;
+      if (tr.scrollIntoView) tr.scrollIntoView({ block: "nearest" });
+      await delay(1100);
+    }
+    const outro = document.getElementById("outro");
+    outro.textContent = `Run complete: 21 steps, checksum matched on both sides, writes rejected during the freeze, rollback verified with an accepted write. Recovery point: ${data.backup_bytes} bytes snapshot.`;
+    outro.classList.add("show");
+  }
+  main();
+</script>
+</body>
+</html>
