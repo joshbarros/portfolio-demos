@@ -25,7 +25,7 @@ SLA or certification is claimed anywhere.
   an audit trail.
 - **Try it:** https://northstar.5-222-1-215.sslip.io — four scenario buttons walk through answer,
   abstention, audited ticket and tenant isolation.
-- **Code:** this repository, `projects/northstar-agent/`.
+- **Code:** https://github.com/joshbarros/portfolio-demos (`projects/northstar-agent/`).
 - **Video:** `projects/northstar-agent/portfolio/video/northstar-demo.mp4` (37s, captioned).
 - **Full package:** `projects/northstar-agent/portfolio/` (story, evidence, checklist, screenshots,
   diagram, proposal notes).

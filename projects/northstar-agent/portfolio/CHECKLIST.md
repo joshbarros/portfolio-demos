@@ -74,7 +74,7 @@ in the current environment. No item is marked PASS on the basis of "it should wo
 | 40 | AI assistance disclosed | PASS | `ROLE.txt`, `PROJECT_STORY.md` §3 |
 | 41 | No secrets in repo, screenshots or video | PASS | `.gitignore`, manual review of frames, `.env` excluded |
 | 42 | No personal or Upwork data in artifacts | PASS | Fictional names only |
-| 43 | Public code repository link | PENDING | Local commit `8ec7cb3`; remote publication not done |
+| 43 | Public code repository link | PASS | https://github.com/joshbarros/portfolio-demos (commit `8ec7cb3`) |
 | 44 | Upwork portfolio item published | BLOCKED | No Upwork MCP access in this environment; package ready for manual publication |
 
 ## Known defects or accepted limitations

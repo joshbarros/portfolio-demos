@@ -8,6 +8,7 @@ audited ticket tool`)
 **Environment:** local Linux workstation (Ubuntu 26.04, Python 3.14 venv) and Hetzner Cloud
 `desafio100k-agents` (Ubuntu 24.04, CAX11, 2 vCPU / 4 GB) running Docker Compose + Caddy
 **Public URL:** https://northstar.5-222-1-215.sslip.io
+**Code:** https://github.com/joshbarros/portfolio-demos
 
 ## What was actually run
 
