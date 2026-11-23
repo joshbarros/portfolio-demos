@@ -1,5 +1,7 @@
 # Portfolio Demos
 
+**Index:** https://joshbarros.github.io/ — the seven systems, the hard part of each one and its limits.
+
 Personal demo projects for Josh Barros (Josué André da Silva Barros). Each project is a
 self-contained, runnable demonstration. None is a client engagement or a production service.
 
