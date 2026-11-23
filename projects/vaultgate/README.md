@@ -29,9 +29,15 @@ pip install -r requirements.txt
 PYTHONPATH=. python -m pytest -q
 ```
 
-## Status
+## Live demo
 
-Backend isolation core complete. HTTP API, React portal, deployment and media are the next step.
+https://vaultgate.5-222-1-215.sslip.io — sign in as Alice (Alpha Freight) or Bob (Beta Clinic) with
+the demo password `demo`. Use "Attempt cross-tenant access" to see the block and the audit entry.
+
+## Media
+
+- Screenshots: `portfolio/screenshots/`.
+- Video: `portfolio/video/vaultgate-demo.mp4` (34.5 s).
 
 ## Limitations
 

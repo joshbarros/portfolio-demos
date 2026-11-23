@@ -15,7 +15,7 @@ SLA or certification is claimed anywhere.
 | **Ticketline** — Field Service Workflow: Job Tickets, Approvals and PDF Invoices | Field service work that cannot be approved or invoiced consistently | Node.js, TypeScript, Fastify, Postgres, React, PDFKit | https://ticketline.5-222-1-215.sslip.io | PUBLIC_VERIFIED · PACKAGED |
 | **Riverbend** — Incremental Data Pipeline with dbt Tests and Data Quality Monitoring | Pipelines that silently load bad data | Python, DuckDB, dbt, Streamlit | https://riverbend.5-222-1-215.sslip.io | PUBLIC_VERIFIED · PACKAGE_PARTIAL |
 | **Harborlift** — Application and Database Migration Lab with Verified Rollback | Migrations without a tested way back | Postgres, Python, Docker, Caddy | https://harborlift.5-222-1-215.sslip.io | PUBLIC_VERIFIED · PACKAGE_PARTIAL |
-| Vaultgate — Multi-Tenant Portal with Authorization and Audit | Tenant data leaking across boundaries | TBD | — | PLANNED |
+| **Vaultgate** — Multi-Tenant Client Portal with Row-Level Security and Audit Logs | Tenant data leaking across boundaries | FastAPI, Postgres RLS, React | https://vaultgate.5-222-1-215.sslip.io | PUBLIC_VERIFIED · PACKAGED |
 | WooBridge — WooCommerce to API Sync | Store data drifting from the system of record | TBD | — | PLANNED |
 
 ## Northstar Agent

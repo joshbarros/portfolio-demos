@@ -1,13 +1,31 @@
 services:
   db:
     image: postgres:16-alpine
+    restart: unless-stopped
     environment:
       POSTGRES_DB: vaultgate
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-vaultgate}
-    ports: ["127.0.0.1:5443:5432"]
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+    volumes: [pgdata:/var/lib/postgresql/data]
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U postgres -d vaultgate"]
-      interval: 3s
-      timeout: 2s
-      retries: 20
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      VAULT_ADMIN_DSN: postgresql://postgres:${POSTGRES_PASSWORD}@db:5432/vaultgate
+      VAULT_OWNER_DSN: postgresql://vault_owner:vault_owner@db:5432/vaultgate
+      VAULT_APP_DSN: postgresql://vault_app:vault_app@db:5432/vaultgate
+      VAULT_SECRET: ${VAULT_SECRET:?set VAULT_SECRET}
+    ports:
+      - "127.0.0.1:${APP_PORT:-8099}:8099"
+
+volumes:
+  pgdata:

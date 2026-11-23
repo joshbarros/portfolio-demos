@@ -1,0 +1,5 @@
+Personal demo project: two fictional organizations share one Postgres database. Isolation is enforced by row-level security (FORCE RLS), not by application filters. The tenant comes from a validated session; a browser parameter cannot change it.
+
+The application role is not the table owner, and RLS is forced, so the policy cannot be bypassed by the app. Tenant context is set per transaction with set_config('app.org_id', …, true), so a pooled connection cannot leak the previous tenant. Sessions expire and can be revoked. Files download through signed URLs with expiry; the app role can insert audit events but not update or delete them.
+
+React portal, FastAPI, Postgres RLS, Docker Compose. 10 tests cover cross-tenant reads and writes, direct SQL, connection reuse, expired and revoked sessions, signed URL expiry, tampering and cross-org signing.
