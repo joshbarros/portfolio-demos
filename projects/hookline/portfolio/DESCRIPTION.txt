@@ -1,0 +1,5 @@
+Personal demo project: a signed webhook triggers a three-step order flow. The event is persisted before processing, duplicate deliveries are deduplicated, transient failures retry with exponential backoff and jitter, and permanent failures go to a dead-letter state with a controlled replay. The console shows every execution, each step, attempts, duration and the final effect.
+
+Node.js/TypeScript, Fastify, Postgres, a separate worker, React and Docker Compose. At-least-once delivery with idempotency keys where the destination supports them; the notification step is deliberately not idempotent so the duplicate is visible.
+
+Live demo and code are public.

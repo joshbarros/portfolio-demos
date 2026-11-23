@@ -1,0 +1,52 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: hookline
+      POSTGRES_USER: hookline
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hookline -d hookline"]
+      interval: 5s
+      timeout: 3s
+      retries: 12
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://hookline:${POSTGRES_PASSWORD}@db:5432/hookline
+      HOOKLINE_SECRET: ${HOOKLINE_SECRET:?set HOOKLINE_SECRET}
+      FAKES_URL: http://fakes:4010
+      PORT: 8097
+    ports:
+      - "127.0.0.1:${APP_PORT:-8097}:8097"
+
+  worker:
+    build: .
+    restart: unless-stopped
+    command: ["node", "dist/worker.js"]
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DATABASE_URL: postgresql://hookline:${POSTGRES_PASSWORD}@db:5432/hookline
+      FAKES_URL: http://fakes:4010
+      MAX_ATTEMPTS: 5
+      STEP_TIMEOUT_MS: 2500
+
+  fakes:
+    build: .
+    restart: unless-stopped
+    command: ["node", "dist/fakes.js"]
+    environment:
+      FAKES_PORT: 4010
+
+volumes:
+  pgdata:
