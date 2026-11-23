@@ -1,0 +1,4 @@
+order_id,customer_id,order_ts,amount_cents,currency,status,updated_at
+ord_1004,cus_01,2026-11-02T14:00:00Z,9900,USD,paid,2026-11-05T09:00:00Z
+ord_1009,cus_06,2026-11-05T10:00:00Z,32000,USD,paid,2026-11-05T10:01:00Z
+ord_1010,cus_02,2026-11-05T11:00:00Z,5600,USD,refunded,2026-11-05T11:05:00Z

@@ -1,0 +1,4 @@
+{"page": 1, "next": null, "data": [
+  {"order_id": "ord_1011", "customer_id": "cus_07", "order_ts": "2026-11-06T08:00:00Z", "amount_cents": 4300, "currency": "USD", "status": "paid", "updated_at": "2026-11-06T08:01:00Z"},
+  {"order_id": "ord_1006", "customer_id": "cus_02", "order_ts": "2026-11-03T12:00:00Z", "amount_cents": 4200, "currency": "USD", "status": "paid", "updated_at": "2026-11-06T09:00:00Z"}
+]}
