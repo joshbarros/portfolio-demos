@@ -12,3 +12,4 @@ coverage/
 *.log
 **/data/*.sqlite
 **/data/*.db
+projects/*/portfolio/export/*.zip
