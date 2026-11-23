@@ -1,0 +1,11 @@
+name: riverbend
+version: "1.0.0"
+profile: riverbend
+model-paths: ["models"]
+test-paths: ["tests"]
+models:
+  riverbend:
+    staging:
+      +materialized: view
+    marts:
+      +materialized: table

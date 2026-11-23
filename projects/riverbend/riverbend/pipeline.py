@@ -58,6 +58,9 @@ class Pipeline:
         self.conn = duckdb.connect(str(db_path))
         self._init_schema()
 
+    def close(self) -> None:
+        self.conn.close()
+
     def _init_schema(self) -> None:
         self.conn.execute("CREATE SCHEMA IF NOT EXISTS raw")
         self.conn.execute("CREATE SCHEMA IF NOT EXISTS staging")

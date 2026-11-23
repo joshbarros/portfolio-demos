@@ -30,6 +30,13 @@ PYTHONPATH=. python -m pytest -q
 7 tests: initial load with quarantine, idempotent re-run, new records, correction of an existing row,
 late older event ignored, API page upsert, reconciliation against a manual SQL sum.
 
-## Next
+## Live demo
 
-dbt models and tests, Streamlit dashboard, scheduled orchestration, Docker deployment and media.
+https://riverbend.5-222-1-215.sslip.io — read-only Streamlit dashboard backed by the same DuckDB file
+the scheduler writes.
+
+- dbt models: `staging.stg_orders`, `marts.fct_daily_revenue`, `marts.dim_customers`.
+- dbt build: 13/13 PASS (models and data tests).
+- Scheduler: checks `data/incoming/*.csv` and the API page on an interval, then rebuilds the marts.
+- The dashboard never triggers ingestion; only the scheduler writes.
+- Simulated incoming files are dropped in data/incoming; the scheduler picks them up on the next tick.

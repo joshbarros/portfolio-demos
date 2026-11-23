@@ -1,0 +1,12 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    environment:
+      SCHEDULE_SECONDS: ${SCHEDULE_SECONDS:-120}
+    ports:
+      - "127.0.0.1:${APP_PORT:-8501}:8501"
+    volumes:
+      - riverbend_data:/app/data
+volumes:
+  riverbend_data:

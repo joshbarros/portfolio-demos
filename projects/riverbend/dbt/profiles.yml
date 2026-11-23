@@ -1,0 +1,8 @@
+riverbend:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: ../data/riverbend.duckdb
+      schema: marts
+      threads: 2

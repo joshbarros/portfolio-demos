@@ -1,0 +1,5 @@
+Personal demo project: an incremental order pipeline that receives imperfect data, quarantines invalid rows with a reason, transforms the valid ones and feeds a reconciliable dashboard.
+
+Every file is stored append-only with its SHA-256, so re-running the same file is a no-op. Valid rows are upserted by order_id and only applied when updated_at is newer, which handles late and out-of-order corrections. A per-source watermark is recorded and every run is logged with counts and status. dbt models and tests cover uniqueness, nullability, accepted values and a business rule; the dashboard shows five indicators that reconcile with a direct SQL query.
+
+Python, DuckDB, dbt, Streamlit and Docker. The public dashboard is read-only; the scheduler ingests new files on a real interval.

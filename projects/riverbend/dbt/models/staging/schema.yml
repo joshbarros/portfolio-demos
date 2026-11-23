@@ -1,0 +1,27 @@
+version: 2
+models:
+  - name: stg_orders
+    description: One row per order, sourced from the incremental analytics table.
+    columns:
+      - name: order_id
+        tests: [unique, not_null]
+      - name: customer_id
+        tests: [not_null]
+      - name: amount_cents
+        tests: [not_null]
+      - name: currency
+        tests:
+          - accepted_values:
+              values: ["USD", "BRL"]
+      - name: status
+        tests:
+          - accepted_values:
+              values: ["paid", "refunded", "cancelled"]
+  - name: fct_daily_revenue
+    columns:
+      - name: order_date
+        tests: [not_null]
+  - name: dim_customers
+    columns:
+      - name: customer_id
+        tests: [unique, not_null]
