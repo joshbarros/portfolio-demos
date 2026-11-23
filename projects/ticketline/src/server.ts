@@ -24,6 +24,21 @@ async function actor(request: { headers: Record<string, unknown> }) {
 
 app.get("/api/health", async () => ({ ok: true, service: "ticketline" }));
 
+app.get("/api/clients", async (request) => {
+  const user = await actor(request);
+  const result = await pool.query("SELECT id, name, address FROM clients WHERE org_id = $1 ORDER BY name", [user.org_id]);
+  return { clients: result.rows };
+});
+
+app.get("/api/services", async (request) => {
+  const user = await actor(request);
+  const result = await pool.query(
+    "SELECT id, name, unit_price_cents FROM services WHERE org_id = $1 ORDER BY name",
+    [user.org_id]
+  );
+  return { services: result.rows };
+});
+
 app.get("/api/users", async () => {
   const result = await pool.query("SELECT id, name, role FROM users ORDER BY role DESC");
   return { users: result.rows };

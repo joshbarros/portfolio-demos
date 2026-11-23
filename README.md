@@ -12,7 +12,7 @@ SLA or certification is claimed anywhere.
 |---|---|---|---|---|
 | **Northstar Agent** — AI Support Agent with RAG, Citations and Auditable Actions | Support answers that cannot be traced or trusted; assistants that invent policy details | Python, FastAPI, React, TypeScript, Postgres + pgvector, Docker | https://northstar.5-222-1-215.sslip.io | PUBLIC_VERIFIED · PACKAGED |
 | **Hookline** — Reliable Webhook and API Automation with Retries and Audit Trail | Webhook integrations that lose events and cannot be replayed | Node.js, TypeScript, Fastify, Postgres, React, Docker | https://hookline.5-222-1-215.sslip.io | PUBLIC_VERIFIED · PACKAGE_PARTIAL |
-| Ticketline — Field Ticket, Approval and Demo Invoice | Field service work that cannot be approved or invoiced consistently | TBD | — | PLANNED |
+| **Ticketline** — Field Service Workflow: Job Tickets, Approvals and PDF Invoices | Field service work that cannot be approved or invoiced consistently | Node.js, TypeScript, Fastify, Postgres, React, PDFKit | https://ticketline.5-222-1-215.sslip.io | PUBLIC_VERIFIED · PACKAGED |
 | Riverbend — Validated Incremental Data Pipeline | Pipelines that silently load bad data | TBD | — | PLANNED |
 | Harborlift — Migration Lab with Restore and Rollback | Migrations without a tested way back | TBD | — | PLANNED |
 | Vaultgate — Multi-Tenant Portal with Authorization and Audit | Tenant data leaking across boundaries | TBD | — | PLANNED |

@@ -1,0 +1,5 @@
+Personal demo project: a field service workflow for a fictional company. A technician records a job with line items, submits it, a reviewer approves, and the app issues a demo invoice as a real PDF.
+
+Money is integer cents. Ticket transitions are explicit and invalid ones are rejected. Invoice numbering is transactional per organization, and the invoice stores a frozen snapshot of the client and items, so editing a client later never rewrites an issued document. Access is scoped by organization.
+
+React/TypeScript, Node.js/Fastify, Postgres, PDFKit and Docker Compose. The PDF is marked as a demo document, not a fiscal invoice. 10 tests cover authorization, invalid transitions, duplicate and concurrent issuance, cross-org access and a real PDF.
