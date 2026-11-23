@@ -163,7 +163,7 @@ export default function App() {
           </div>
         </div>
         <div className="topbar-right">
-          <span className="pill pill-demo">Personal demo project</span>
+          <span className="pill pill-demo">Case 01 · personal demo</span>
           <span className="status">
             <i className={error ? "dot dot-bad" : "dot"} />
             {error ? "offline" : `online · ${mode}`}
@@ -244,7 +244,7 @@ export default function App() {
         <div className="transcript" ref={scroller}>
           {turns.length === 0 && (
             <div className="empty">
-              <Icon name="spark" />
+              <Icon name="doc" />
               <h3>Ask a support question</h3>
               <p>
                 Pick a demo scenario or type a question below. The agent answers only from the demo

@@ -88,7 +88,7 @@ export default function App() {
         <div className="card">
           <h1>Vaultgate</h1>
           <p>Multi-tenant client portal · row-level security · audit logs</p>
-          <span className="pill">Personal demo project</span>
+          <span className="pill">Case 06 · personal demo</span>
           <label>
             Sign in as
             <select value={user} onChange={(event) => setUser(event.target.value)}>
@@ -120,7 +120,7 @@ export default function App() {
           </div>
         </div>
         <div className="topbar-right">
-          <span className="pill">Personal demo project</span>
+          <span className="pill">Case 06 · personal demo</span>
           <button className="ghost" onClick={() => void attemptCrossTenant()} disabled={busy}>
             Attempt cross-tenant access
           </button>

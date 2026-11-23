@@ -110,7 +110,7 @@ export default function App() {
           </div>
         </div>
         <div className="topbar-right">
-          <span className="pill pill-demo">Personal demo project</span>
+          <span className="pill pill-demo">Case 02 · personal demo</span>
           <span className="stats">{stats.total} events · {stats.ok} ok · {stats.dead} dead</span>
         </div>
       </header>

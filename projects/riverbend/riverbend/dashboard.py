@@ -16,9 +16,68 @@ def query(sql: str) -> pd.DataFrame:
         return conn.execute(sql).df()
 
 
-st.set_page_config(page_title="Riverbend — data quality", page_icon="🌊", layout="wide")
-st.title("Riverbend")
-st.caption("Incremental order pipeline · validation · quarantine · reconciled indicators")
+st.set_page_config(page_title="Riverbend — data quality", page_icon="▦", layout="wide")
+
+st.markdown(
+    """
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..600&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+      html, body, [class*="css"], .stApp { font-family: "Archivo", ui-sans-serif, system-ui, sans-serif; }
+      .stApp { background: #f2eee4; color: #12110d; }
+      .block-container { max-width: 1220px; padding-top: 2rem; padding-bottom: 3rem; }
+      header[data-testid="stHeader"], [data-testid="stToolbar"], #MainMenu, footer { display: none !important; }
+
+      .rb-head { border-bottom: 1px solid #12110d; padding: 4px 0 18px; margin-bottom: 20px; }
+      .rb-kicker { font-family: "IBM Plex Mono", monospace; font-size: 9px; letter-spacing: .14em;
+                   text-transform: uppercase; color: #c33c18; margin-bottom: 10px; }
+      .rb-head h1 { font-family: "Fraunces", Georgia, serif; font-weight: 400; font-size: 3rem;
+                    line-height: 1; letter-spacing: -.035em; margin: 0; color: #12110d; }
+      .rb-head p { font-family: "IBM Plex Mono", monospace; font-size: 10px; letter-spacing: .05em;
+                   text-transform: uppercase; color: #847e6d; margin: 10px 0 0; }
+      .rb-foot { font-family: "IBM Plex Mono", monospace; font-size: 9px; letter-spacing: .04em;
+                 text-transform: uppercase; color: #847e6d; border-top: 1px solid #d6cdb9;
+                 padding-top: 12px; margin-top: 24px; }
+
+      h1, h2, h3 { font-family: "Fraunces", Georgia, serif !important; font-weight: 400 !important;
+                   letter-spacing: -.02em !important; color: #12110d !important; }
+      h2 { font-size: 1.45rem !important; margin-top: 1.6rem !important; }
+      h3 { font-size: 1.15rem !important; }
+      p, li, label { color: #3a382f; font-size: 13.5px; }
+      [data-testid="stCaptionContainer"] p { font-family: "IBM Plex Mono", monospace; font-size: 9.5px;
+                   letter-spacing: .03em; color: #847e6d; }
+
+      [data-testid="stMetric"] { background: #fbf8f0; border: 1px solid #d6cdb9;
+                   border-top: 1px solid #12110d; padding: 14px 14px 12px; }
+      [data-testid="stMetricLabel"] p { font-family: "IBM Plex Mono", monospace; font-size: 8.5px;
+                   letter-spacing: .1em; text-transform: uppercase; color: #847e6d; }
+      [data-testid="stMetricValue"] { font-family: "Fraunces", Georgia, serif; font-weight: 400;
+                   font-size: 1.9rem; letter-spacing: -.02em; color: #12110d; }
+      [data-testid="stMetricDelta"] { font-family: "IBM Plex Mono", monospace; font-size: 9px; }
+
+      [data-testid="stTable"] table { border-collapse: collapse; font-size: 13px; }
+      [data-testid="stTable"] th { font-family: "IBM Plex Mono", monospace; font-size: 8.5px;
+                   letter-spacing: .09em; text-transform: uppercase; color: #847e6d;
+                   border-bottom: 1px solid #12110d; padding: 8px 8px; }
+      [data-testid="stTable"] td { border-bottom: 1px solid #d6cdb9; padding: 8px 8px; color: #3a382f; }
+      [data-testid="stDataFrame"] { border: 1px solid #d6cdb9; }
+
+      [data-testid="stVegaLiteChart"] { background: #fbf8f0; border: 1px solid #d6cdb9; padding: 8px 6px 2px; }
+      [data-testid="stCodeBlock"] pre, .stCodeBlock pre { background: #fbf8f0 !important;
+                   border: 1px solid #d6cdb9 !important; border-radius: 0 !important;
+                   font-family: "IBM Plex Mono", monospace !important; font-size: 11px !important; }
+      .stAlert { border-radius: 0; }
+      hr { border: 0; border-top: 1px solid #d6cdb9; margin: 1.6rem 0; }
+      ::selection { background: #12110d; color: #f2eee4; }
+    </style>
+    <div class="rb-head">
+      <div class="rb-kicker">Case 04 · personal demo</div>
+      <h1>Riverbend</h1>
+      <p>Incremental order pipeline · validation · quarantine · reconciled indicators</p>
+    </div>
+    """,
+    unsafe_allow_html=True,
+)
 
 if not DB.exists():
     st.error("Database not found. Run `python -m riverbend.cli seed` first.")
@@ -68,7 +127,7 @@ def render() -> None:
             st.info("Run dbt to populate the marts.")
         else:
             pivot = revenue.pivot(index="order_date", columns="currency", values="revenue").fillna(0)
-            st.bar_chart(pivot)
+            st.bar_chart(pivot, color=["#c33c18", "#62603f"])
 
         st.subheader("Orders by status")
         status = query("select status, count(*) as orders from analytics.orders group by 1 order by 2 desc")
@@ -113,6 +172,10 @@ def render() -> None:
     )
     st.caption(
         f"Watermark (newest updated_at processed): {query('select max(last_updated_at) as w from ops.watermarks').iloc[0]['w']}"
+    )
+    st.markdown(
+        '<div class="rb-foot">Fictional data · 13/13 dbt models and tests passing · quarantine is a first-class state, not an error log.</div>',
+        unsafe_allow_html=True,
     )
 
 

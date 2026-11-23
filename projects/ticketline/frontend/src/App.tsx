@@ -123,7 +123,7 @@ export default function App() {
           </div>
         </div>
         <div className="topbar-right">
-          <span className="pill demo">Personal demo project</span>
+          <span className="pill demo">Case 03 · personal demo</span>
           <label className="role">
             Acting as
             <select value={userId} onChange={(event) => { setUserId(event.target.value); setSelected(null); }}>
