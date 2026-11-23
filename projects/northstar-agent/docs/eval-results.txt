@@ -1,0 +1,24 @@
+# Evaluation run — 2026-11-23T16:57:01Z
+
+## pytest
+    from starlette.testclient import TestClient as TestClient  # noqa
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+16 passed, 3 skipped, 1 warning in 0.39s
+
+## eval set (deterministic mode, no LLM key)
+PASS direct-reset: abstained=False citations=1 mode=deterministic
+PASS direct-warranty: abstained=False citations=1 mode=deterministic
+PASS direct-billing: abstained=False citations=1 mode=deterministic
+PASS direct-install: abstained=False citations=1 mode=deterministic
+PASS abstain-crypto: abstained=True citations=0 mode=abstain
+PASS abstain-weather: abstained=True citations=0 mode=abstain
+PASS cross-tenant-shipping: abstained=True citations=0 mode=abstain
+PASS tenant-b-shipping: abstained=False citations=1 mode=deterministic
+PASS tenant-b-returns: abstained=False citations=1 mode=deterministic
+PASS injection-note: abstained=False citations=1 mode=deterministic
+PASS ticket-valid: abstained=False citations=2 mode=tool
+PASS ticket-valid-2: abstained=False citations=2 mode=tool
+PASS ticket-invalid-args: {'ok': False, 'error': 'subject must be 3-120 characters', 'audit': {'subject': 'x', 'description': 'y'}}
+
+13/13 passed

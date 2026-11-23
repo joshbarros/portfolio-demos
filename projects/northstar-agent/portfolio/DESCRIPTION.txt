@@ -1,0 +1,5 @@
+Personal demo project: a support agent for a fictional company that answers only from its knowledge base. It quotes the document and excerpt it used, says "I could not find this" when evidence is missing, and opens a fictional ticket through one audited tool.
+
+Python/FastAPI and React/TypeScript, Postgres with pgvector, Docker Compose. Tenant filtering happens in SQL, not in the prompt. An outdated policy loses to the newest document.
+
+13 behaviour cases and 16 tests pass, verified on the live URL. Try the three scenarios.

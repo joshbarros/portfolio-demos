@@ -1,0 +1,8 @@
+Python
+FastAPI
+RAG
+PostgreSQL
+React
+
+# Candidate names from the Upwork taxonomy; verify the exact labels in the
+# platform before publishing. Five is the maximum allowed.

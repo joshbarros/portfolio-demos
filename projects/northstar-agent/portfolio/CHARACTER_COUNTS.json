@@ -1,0 +1,28 @@
+{
+  "title": {
+    "value": "AI Support Agent with RAG, Citations and Auditable Actions",
+    "chars": 58,
+    "limit": 70
+  },
+  "role": {
+    "value": "Backend & AI Integration Engineer — AI-assisted build",
+    "chars": 53,
+    "limit": 100
+  },
+  "description": {
+    "value": "Personal demo project: a support agent for a fictional company that answers only from its knowledge base. It quotes the document and excerpt it used, says \"I could not find this\" when evidence is missing, and opens a fictional ticket through one audited tool.\n\nPython/FastAPI and React/TypeScript, Postgres with pgvector, Docker Compose. Tenant filtering happens in SQL, not in the prompt. An outdated policy loses to the newest document.\n\n13 behaviour cases and 16 tests pass, verified on the live URL. Try the three scenarios.",
+    "chars": 528,
+    "limit": 600
+  },
+  "skills": {
+    "value": [
+      "Python",
+      "FastAPI",
+      "RAG",
+      "PostgreSQL",
+      "React"
+    ],
+    "count": 5,
+    "limit": 5
+  }
+}
