@@ -17,5 +17,5 @@
 | Unit tests | PASS (8) |
 | Public HTTPS deployment | PASS |
 | Screenshots | PASS |
-| Video | PENDING |
+| Video | PASS — 41.5s, 1280x720, captions burned in |
 | Upwork portfolio entry | PENDING |

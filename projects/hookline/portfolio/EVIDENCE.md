@@ -17,5 +17,7 @@
 | Tampered signature | 401 `bad_signature` |
 | Stale signed request | 401 `stale` |
 
+Video: `portfolio/video/hookline-demo.mp4` (41.5 s, 1280x720, captions).
+
 Unit tests: 8 passing (`npm test`) covering signature verification, replay window, event validation
 and backoff bounds.
