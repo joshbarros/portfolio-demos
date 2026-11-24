@@ -86,3 +86,16 @@ code{font-family:var(--mono)}
 .notice.ok{background:#e7efe4;border:1px solid #c6d8c0;color:#245e3a}
 .notice.bad{background:#f7e4df;border:1px solid #e0b7ac;color:var(--bad)}
 .error{border-radius:0;background:#f7e4df;border:1px solid #e0b7ac;color:var(--bad);font-family:var(--mono);font-size:9.5px;padding:10px 12px}
+
+
+/* mobile */
+@media (max-width: 760px) {
+  .topbar { flex-wrap: wrap; gap: 10px; padding: 12px 14px; }
+  .brand { flex: 1 1 100%; }
+  .topbar-right { flex: 1 1 100%; justify-content: space-between; flex-wrap: wrap; gap: 7px; }
+  .pill { font-size: 7px; padding: 4px 6px; }
+  main { padding: 0 12px; margin: 16px auto; gap: 12px; }
+  section { padding: 16px 14px; }
+  [data-table], table { display: block; overflow-x: auto; white-space: nowrap; }
+  .card { padding: 24px; max-width: 100%; }
+}
